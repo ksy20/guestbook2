@@ -51,6 +51,30 @@ public class GuestbookController extends HttpServlet {
 			
 			//리다이렉트
 			response.sendRedirect("/phoneBook2/Pbc?action=addList");
+		}else if ("deleteForm".equals(act)) {
+			int no = Integer.parseInt(request.getParameter("no"));
+			
+			request.setAttribute("no", no);
+			
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/deleteForm.jsp");
+			rd.forward(request, response);
+			
+		} else if ("delete".equals(act)) {
+			//파라미터 3개를 꺼내온다 
+			int no = Integer.parseInt(request.getParameter("no"));
+			String password = request.getParameter("password");
+			
+			//dao 메모리에 올린다
+			GuestBookDao guestDao = new GuestBookDao();
+			
+			//delete
+			guestDao.delete(no, password);
+			
+			//리다이렉트
+			response.sendRedirect("/guestbook2/gbc?action=addList");
+		} else {
+			System.out.println("파라미터 값 없음");
 		}
 	
 	}
