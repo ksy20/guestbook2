@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.javaex.dao.GuestBookDao;
 import com.javaex.vo.GuestBookVo;
 
-@WebServlet("/GuestbookController")
+@WebServlet("/Gbc")
 public class GuestbookController extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,7 +31,7 @@ public class GuestbookController extends HttpServlet {
 			
 			request.setAttribute("pList", guestList);
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/list.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/addList.jsp");
 			rd.forward(request, response);
 		}else if ("add".equals(act)) {
 			//파라미터 3개를 꺼내온다 
